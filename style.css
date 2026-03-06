@@ -64,5 +64,47 @@ header {
     margin-bottom: 8px;
 }
 
-.visto { background: var(--accent); color: #000; }
+.vista { background: var(--accent); color: #000; }
 .pendiente { background: var(--pending); color: #000; }
+
+/* Añade esto a tu archivo style.css */
+.meta-data {
+    display: flex;
+    flex-direction: column;
+    /* Una línea debajo de otra en móvil */
+    gap: 4px;
+    font-size: 0.75rem;
+    color: var(--text-main);
+    margin-top: 8px;
+    border-top: 1px solid #3e444d;
+    padding-top: 8px;
+}
+
+.meta-data span {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+/* Añade esto a tu archivo style.css */
+.search-container {
+    margin-bottom: 20px;
+}
+
+#busqueda {
+    width: 100%;
+    padding: 12px 15px;
+    border-radius: 8px;
+    border: 1px solid #456;
+    background-color: #2c3440;
+    color: white;
+    font-size: 16px;
+    /* Tamaño 16px evita que el iPhone haga zoom automático al escribir */
+    box-sizing: border-box;
+    /* Asegura que el padding no desborde el ancho */
+}
+
+#busqueda:focus {
+    outline: none;
+    border-color: var(--accent);
+}
