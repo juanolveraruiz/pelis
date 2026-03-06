@@ -1,0 +1,68 @@
+:root {
+    --bg-color: #14181c;
+    --card-bg: #2c3440;
+    --text-main: #9ab;
+    --text-bright: #ffffff;
+    --accent: #00e054;
+    --pending: #ff8000;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    font-family: 'Segoe UI', sans-serif;
+    margin: 0;
+}
+
+header {
+    padding: 30px 20px;
+    text-align: center;
+    border-bottom: 1px solid #456;
+}
+
+.container {
+    padding: 20px;
+    max-width: 800px;
+    margin: auto;
+}
+
+.movie-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+.movie-card {
+    background: var(--card-bg);
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid #456;
+}
+
+.poster {
+    width: 100%;
+    aspect-ratio: 2 / 3;
+    object-fit: cover;
+}
+
+.info { padding: 12px; }
+
+.title {
+    color: var(--text-bright);
+    font-weight: bold;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.badge {
+    font-size: 0.7rem;
+    padding: 3px 8px;
+    border-radius: 4px;
+    text-transform: uppercase;
+    font-weight: bold;
+    display: inline-block;
+    margin-bottom: 8px;
+}
+
+.visto { background: var(--accent); color: #000; }
+.pendiente { background: var(--pending); color: #000; }
