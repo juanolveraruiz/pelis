@@ -134,9 +134,20 @@ header {
 
 .detalle-info {
     padding: 20px;
-    margin-top: -100px;
+    margin-top: -80px;
     /* Sube la info sobre la imagen */
     position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+.detalle-info h1 {
+    margin: 0;
+    font-size: 1.8rem;
+    color: var(--text-bright);
+    width: 65%;
+    /* Esto obliga al título a saltar de línea antes de tocar el póster */
+    line-height: 1.2;
 }
 
 .btn-cerrar {
@@ -169,9 +180,9 @@ header {
 /* El poster pequeño que flota */
 .poster-overlay {
     position: absolute;
-    bottom: -20px;
+    bottom: -40px;
     right: 20px;
-    width: 100px;
+    width: 110px;
     z-index: 10;
 }
 

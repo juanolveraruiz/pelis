@@ -2,7 +2,7 @@ const peliculas = [
     {
         titulo: "Eternity",
         poster: "https://atwenty-four.transforms.svdcdn.com/production/images/Eternity_DOM_Online_Teaser_1-Sheet_01_FIN8.jpg?w=1923&auto=compress%2Cformat&fit=crop&dm=1753717316&s=b61bf543a5bed1bf6f7d20383340c3d0",
-        backdrop: "https://reactormag.com/wp-content/uploads/2025/12/eternity-movie.jpg",
+        backdrop: "https://www.ecartelera.com.mx/carteles/fondos/19500/19564-n2.jpg",
         estado: "pendiente",
         sugiere: "Votación (Juan)",
         fecha: "2026-03-06",
@@ -11,7 +11,7 @@ const peliculas = [
     {
         titulo: "Detective Pikachu",
         poster: "https://images.justwatch.com/poster/309518628/s718/pokemon-detective-pikachu.jpg",
-        backdrop: "",
+        backdrop: "https://media.gq.com/photos/5cd44139b41d09ef96cd74a9/16:9/w_2560%2Cc_limit/Detective-Pikachu-Review-He's-small-and-cute-and-he's-a-detective-gq.jpg",
         estado: "vista",
         sugiere: "Luis",
         fecha: "2026-02-27",
@@ -20,7 +20,7 @@ const peliculas = [
     {
         titulo: "Propuesta de Año Bisiesto",
         poster: "https://m.media-amazon.com/images/S/pv-target-images/532c45b94933a76674a4bcc6d5ab5081394da5bc3a0d683de1eee80bb7e1901c.jpg",
-        backdrop: "",
+        backdrop: "https://m.media-amazon.com/images/S/pv-target-images/25c47ed218e250a0e0815a7aa53eda2aee0f29a791f1317fbd6f01c78cf3ed72._SX1080_FMjpg_.jpg",
         estado: "vista",
         sugiere: "Marisela",
         fecha: "2026-02-19",
@@ -29,7 +29,7 @@ const peliculas = [
     {
         titulo: "Your Name",
         poster: "https://m.media-amazon.com/images/M/MV5BMTIyNzFjNzItZmQ1MC00NzhjLThmMzYtZjRhN2Y3MmM2OGQyXkEyXkFqcGc@._V1_.jpg",
-        backdrop: "",
+        backdrop: "https://tuwebanime.com/wp-content/uploads/2023/07/que-es-el-anime-tu-web-anime-your-name.jpg",
         estado: "vista",
         sugiere: "Alan & Juan",
         fecha: "2026-02-13",
@@ -38,7 +38,7 @@ const peliculas = [
     {
         titulo: "Un Par Nada Ejemplar",
         poster: "https://m.media-amazon.com/images/S/pv-target-images/a111c728ac239b82cc4360a56470d5dc34956150d7f72ba8ab86f94a2b9d5840.jpg",
-        backdrop: "",
+        backdrop: "https://occ-0-8407-2219.1.nflxso.net/dnm/api/v6/6AYY37jfdO6hpXcMjf9Yu5cnmO0/AAAABXBQxowpdhGk466Q0eVkiHA3VA6QlrJQFw_irOHZ_MG5DEr0K6cDnDFfYcc2nBLQ5vOQ5drkKF7Ocvh4hZt4yAHynBxvSHjTuHus.jpg?r=2a5",
         estado: "vista",
         sugiere: "Claudia",
         fecha: "2026-02-03",
@@ -47,7 +47,7 @@ const peliculas = [
     {
         titulo: "The Interview",
         poster: "https://resizing.flixster.com/-XZAfHZM39UwaGJIFWKAE8fS0ak=/v3/t/assets/p10569374_p_v13_ae.jpg",
-        backdrop: "",
+        backdrop: "https://i0.wp.com/www.americamagazine.org/wp-content/uploads/2017/01/interview-149842.jpg?fit=2048%2C1152&ssl=1",
         estado: "vista",
         sugiere: "Alan",
         fecha: "2026-01-30",
@@ -55,8 +55,8 @@ const peliculas = [
     },
     {
         titulo: "This Is The End",
-        poster: "https://m.media-amazon.com/images/S/pv-target-images/3e44d0a657cdefeaa6ce7502af8eb864f0bb516051d99c6b572a941fbc7bce9d.jpg",
-        backdrop: "",
+        poster: "https://resizing.flixster.com/-XZAfHZM39UwaGJIFWKAE8fS0ak=/v3/t/assets/p9627886_p_v10_az.jpg",
+        backdrop: "https://images.bauerhosting.com/legacy/empire-tmdb/films/109414/images/hkuPAYz0TstcAquVpibaDnADqQS.jpg?ar=16%3A9&fit=crop&crop=top&auto=format&w=undefined&q=80",
         estado: "vista",
         sugiere: "Juan",
         fecha: "2026-01-23",
