@@ -3,10 +3,10 @@ const peliculas = [
         titulo: "Eternity",
         poster: "https://atwenty-four.transforms.svdcdn.com/production/images/Eternity_DOM_Online_Teaser_1-Sheet_01_FIN8.jpg?w=1923&auto=compress%2Cformat&fit=crop&dm=1753717316&s=b61bf543a5bed1bf6f7d20383340c3d0",
         backdrop: "https://www.ecartelera.com.mx/carteles/fondos/19500/19564-n2.jpg",
-        estado: "pendiente",
+        estado: "vista",
         sugiere: "Votación (Juan)",
         fecha: "2026-03-06",
-        anecdota: "",
+        anecdota: "Jotearon a verla en inglés.",
     },
     {
         titulo: "Detective Pikachu",
