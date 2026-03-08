@@ -213,3 +213,17 @@ header {
 .meta-detalle span::first-letter {
     text-transform: uppercase;
 }
+
+.rating-estrellas {
+    font-size: 1.4rem;
+    margin-bottom: 10px;
+    letter-spacing: 2px;
+    /* Separa un poco las estrellas */
+}
+
+/* Opcional: Si quieres que también aparezcan en la lista principal */
+.movie-card .rating-mini {
+    font-size: 0.8rem;
+    color: #ffc107;
+    margin-top: 5px;
+}

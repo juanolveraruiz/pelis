@@ -1,3 +1,4 @@
+// --- 1. BASE DE DATOS DEL CINE CLUB ---
 const peliculas = [
     {
         titulo: "Eternity",
@@ -6,6 +7,7 @@ const peliculas = [
         estado: "vista",
         sugiere: "Votación (Juan)",
         fecha: "2026-03-06",
+        rating: 5, // Puedes cambiar estos números (1 al 5)
         anecdota: "Jotearon a verla en inglés.",
     },
     {
@@ -15,6 +17,7 @@ const peliculas = [
         estado: "vista",
         sugiere: "Luis",
         fecha: "2026-02-27",
+        rating: 4,
         anecdota: "",
     },
     {
@@ -24,6 +27,7 @@ const peliculas = [
         estado: "vista",
         sugiere: "Marisela",
         fecha: "2026-02-19",
+        rating: 3,
         anecdota: "",
     },
     {
@@ -33,6 +37,7 @@ const peliculas = [
         estado: "vista",
         sugiere: "Alan & Juan",
         fecha: "2026-02-13",
+        rating: 5,
         anecdota: "",
     },
     {
@@ -42,6 +47,7 @@ const peliculas = [
         estado: "vista",
         sugiere: "Claudia",
         fecha: "2026-02-03",
+        rating: 4,
         anecdota: "",
     },
     {
@@ -51,6 +57,7 @@ const peliculas = [
         estado: "vista",
         sugiere: "Alan",
         fecha: "2026-01-30",
+        rating: 4,
         anecdota: "",
     },
     {
@@ -60,37 +67,69 @@ const peliculas = [
         estado: "vista",
         sugiere: "Juan",
         fecha: "2026-01-23",
+        rating: 5,
         anecdota: "",
     }
-    // Agrega más aquí...
 ];
 
 const listContainer = document.getElementById('movie-list');
 const buscador = document.getElementById('busqueda');
 
-// Función que dibuja las películas que recibe como parámetro
+// --- 2. FUNCIÓN PARA GENERAR ESTRELLAS ---
+function generarEstrellas(rating) {
+    if (!rating || rating === 0) return '<span style="color: #456; font-size: 0.8rem;">Sin calificar</span>';
+    let estrellasHtml = '';
+    for (let i = 1; i <= 5; i++) {
+        estrellasHtml += `<span style="color: ${i <= rating ? '#ffc107' : '#456'};">★</span>`;
+    }
+    return estrellasHtml;
+}
+
+// --- 3. FUNCIÓN PARA FORMATEAR FECHAS SIN ERRORES ---
+function formatearFecha(fechaStr, esLarga = false) {
+    const date = new Date(fechaStr);
+    const fechaCorregida = new Date(date.getTime() + date.getTimezoneOffset() * 60000);
+    
+    const opciones = esLarga 
+        ? { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' }
+        : { day: 'numeric', month: 'short' };
+        
+    return fechaCorregida.toLocaleDateString('es-ES', opciones);
+}
+
+// --- 4. FUNCIÓN PARA DIBUJAR LA LISTA ---
 function renderizar(lista) {
+    if (!listContainer) return;
     listContainer.innerHTML = "";
 
-    // Ordenar por fecha (más reciente primero)
+    // Actualizar contadores (si existen los elementos en el HTML)
+    const countVistas = document.getElementById('count-vistas');
+    const countPendientes = document.getElementById('count-pendientes');
+    
+    if (countVistas && countPendientes) {
+        countVistas.innerText = peliculas.filter(p => p.estado.toLowerCase().includes('vist')).length;
+        countPendientes.innerText = peliculas.filter(p => p.estado === 'pendiente').length;
+    }
+
     const ordenadas = [...lista].sort((a, b) => new Date(b.fecha) - new Date(a.fecha));
 
     ordenadas.forEach(peli => {
-        const fechaFormateada = new Date(peli.fecha).toLocaleDateString('es-ES', {
-            day: 'numeric', month: 'short', year: 'numeric'
-        });
-
         const card = document.createElement('div');
         card.className = 'movie-card';
+        
         const indexOriginal = peliculas.findIndex(p => p.titulo === peli.titulo);
         card.onclick = () => abrirDetalle(indexOriginal);
+
         card.innerHTML = `
             <img src="${peli.poster}" class="poster" alt="${peli.titulo}">
             <div class="info">
-                <span class="badge ${peli.estado}">${peli.estado}</span>
+                <span class="badge ${peli.estado.toLowerCase().includes('vist') ? 'visto' : 'pendiente'}">${peli.estado}</span>
                 <span class="title">${peli.titulo}</span>
+                <div style="color: #ffc107; font-size: 0.8rem; margin-bottom: 5px;">
+                    ${peli.estado.toLowerCase().includes('vist') ? generarEstrellas(peli.rating) : ''}
+                </div>
                 <div class="meta-data">
-                    <span>🗓️ ${fechaFormateada}</span>
+                    <span>🗓️ ${formatearFecha(peli.fecha)}</span>
                     <span>👤 ${peli.sugiere}</span> 
                 </div>
             </div>
@@ -99,25 +138,13 @@ function renderizar(lista) {
     });
 }
 
-// Evento para filtrar mientras escribes
-buscador.addEventListener('input', (e) => {
-    const termino = e.target.value.toLowerCase();
-    
-    const filtradas = peliculas.filter(peli => {
-        return peli.titulo.toLowerCase().includes(termino) || 
-               peli.sugiere.toLowerCase().includes(termino);
-    });
-
-    renderizar(filtradas);
-});
-
-// Función para abrir el detalle
+// --- 5. FUNCIÓN PARA EL MODAL DE DETALLE ---
 function abrirDetalle(index) {
     const peli = peliculas[index];
     const modal = document.getElementById('modal-pelicula');
     const contenido = document.getElementById('contenido-detalle');
-    const fechaOpciones = { weekday: 'long', day: 'numeric', month: 'long',};
-    const fechaBonita = new Date(peli.fecha).toLocaleDateString('es-ES', fechaOpciones);
+
+    if (!modal || !contenido) return;
 
     contenido.innerHTML = `
         <div class="header-detalle">
@@ -128,24 +155,39 @@ function abrirDetalle(index) {
         </div>
         <div class="detalle-info">
             <h1>${peli.titulo}</h1>
+            <div style="font-size: 1.4rem; margin: 10px 0;">
+                ${generarEstrellas(peli.rating)}
+            </div>
             <div class="meta-detalle">
-                <span>🗓️ ${new Date(peli.fecha).toLocaleDateString('es-ES', { weekday: 'long', day: 'numeric', month: 'long' })}</span>
+                <span style="text-transform: capitalize;">🗓️ ${formatearFecha(peli.fecha, true)}</span>
                 <span>👤 Sugerido por: ${peli.sugiere}</span>
             </div>
             <div class="comentarios-seccion">
                 <h3>📝 Notas de la reunión</h3>
-                <p>${peli.anecdota || "No hay notas."}</p>
+                <p>${peli.anecdota || "No hay notas para esta sesión."}</p>
             </div>
         </div>
     `;
     modal.style.display = 'block';
-    document.body.style.overflow = 'hidden'; // Evita scroll de fondo
+    document.body.style.overflow = 'hidden';
 }
 
 function cerrarDetalle() {
-    document.getElementById('modal-pelicula').style.display = 'none';
+    const modal = document.getElementById('modal-pelicula');
+    if (modal) modal.style.display = 'none';
     document.body.style.overflow = 'auto';
 }
 
-// Carga inicial
+// --- 6. BUSCADOR Y CARGA INICIAL ---
+if (buscador) {
+    buscador.addEventListener('input', (e) => {
+        const termino = e.target.value.toLowerCase();
+        const filtradas = peliculas.filter(peli => 
+            peli.titulo.toLowerCase().includes(termino) || 
+            peli.sugiere.toLowerCase().includes(termino)
+        );
+        renderizar(filtradas);
+    });
+}
+
 document.addEventListener('DOMContentLoaded', () => renderizar(peliculas));
