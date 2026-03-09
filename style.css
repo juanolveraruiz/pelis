@@ -109,18 +109,41 @@ header {
     border-color: var(--accent);
 }
 
-/* El contenedor que cubre todo */
+/* El contenedor principal ocupa toda la pantalla con posición absoluta */
 .detalle-modal {
-    display: none;
-    /* Oculto por defecto */
+    display: none; /* Oculto por defecto */
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: var(--bg-color);
     z-index: 1000;
-    overflow-y: auto;
+    overflow: hidden; /* No queremos scroll aquí, el contenido fluye */
+    background-color: black; /* Fonde de seguridad */
+}
+
+/* Oscurecemos un poco la imagen para que el texto blanco sea legible */
+.detalle-modal::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.1) 50%, rgba(0, 0, 0, 0.7) 100%);
+    z-index: 0;
+}
+/* Añadimos un degradado negro en la base para que el texto blanco siempre se lea bien */
+.detalle-modal::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 70%; /* El degradado cubre la mitad inferior */
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0.4) 40%, transparent 100%);
+    z-index: 1;
+    pointer-events: none;
 }
 
 /* Imagen de portada (Backdrop) */
@@ -130,6 +153,18 @@ header {
     object-fit: cover;
     opacity: 0.5;
     mask-image: linear-gradient(to bottom, black 50%, transparent 100%);
+}
+
+/* La imagen BACKDROP ocupa todo el fondo de la pantalla */
+.backdrop-fondo {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+    /* Se va detrás de todo */
 }
 
 .detalle-info {
@@ -150,40 +185,106 @@ header {
     line-height: 1.2;
 }
 
+/* El contenido que va sobre la imagen (Texto y notas) */
+.detalle-wrapper {
+    position: absolute; /* Cambiado a absolute para que se superponga al fondo */
+    top: 0;
+    left: 0;
+    z-index: 2; /* Sobre la capa oscura */
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end; /* Empuja el contenido hacia abajo */
+    padding-bottom: 60px; /* Espacio abajo */
+    box-sizing: border-box;
+}
+
+/* Contenedor específico para el título y los meta-datos (Centrados) */
+.datos-centrados {
+    text-align: center;
+    padding: 0 30px;
+    margin-bottom: 20px;
+}
+
+.detalle-wrapper h1 {
+    font-size: 2.2rem;
+    font-weight: 700;
+    margin: 0 0 10px 0;
+    color: white;
+}
+
+.meta-detalle-centrado {
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.9);
+    margin: 5px 0;
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    align-items: center;
+}
+
+/* La 'X' de cerrar flotante y más grande */
 .btn-cerrar {
-    position: fixed;
+    position: absolute;
     top: 20px;
-    left: 20px;
-    background: rgba(0, 0, 0, 0.5);
+    right: 20px; /* Cambiado a la derecha para un estilo más común */
+    z-index: 10010;
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
     color: white;
     border: none;
     border-radius: 50%;
-    width: 40px;
-    height: 40px;
-    z-index: 1001;
+    width: 32px;
+    height: 32px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background 0.3s;
 }
 
+.btn-cerrar:active {
+    background: rgba(255, 255, 255, 0.4);
+}
+
+/* Sección de notas (similar al recuadro de 'Organizado por' en tu ejemplo) */
 .comentarios-seccion {
-    margin-top: 20px;
-    background: var(--card-bg);
-    padding: 15px;
-    border-radius: 12px;
+    margin: 0 25px;
+    background: rgba(255, 255, 255, 0.12); /* Fondo muy suave y traslúcido */
+    backdrop-filter: blur(10px); /* Efecto de vidrio esmerilado de Apple */
+    -webkit-backdrop-filter: blur(10px);
+    padding: 20px;
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.1); /* Borde sutil */
+    text-align: center;
+}
+
+.comentarios-seccion h3 {
+    margin: 0 0 10px 0;
+    font-size: 1.1rem;
+    color: white;
+}
+
+.comentarios-seccion p {
+    margin: 0;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    color: rgba(255, 255, 255, 0.8);
 }
 
 /* Contenedor del encabezado en el detalle */
 .header-detalle {
     position: relative;
-    height: 300px;
-    /* Ajusta según prefieras */
+    height: 300px; /* Ajusta según prefieras */
 }
 
-/* El poster pequeño que flota */
+/* El poster mini ya no va aquí (Estilo Apple Invite) */
 .poster-overlay {
-    position: absolute;
-    bottom: -40px;
-    right: 20px;
-    width: 110px;
-    z-index: 10;
+    display: none;
 }
 
 .mini-poster {

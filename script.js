@@ -144,30 +144,32 @@ function abrirDetalle(index) {
     const modal = document.getElementById('modal-pelicula');
     const contenido = document.getElementById('contenido-detalle');
 
-    if (!modal || !contenido) return;
+    // Cambiamos el HTML dinámico para reflejar el nuevo diseño
+    modal.innerHTML = `
+    <button class="btn-cerrar" onclick="cerrarDetalle()">✕</button>
+    <img src="${peli.backdrop}" class="backdrop-fondo" alt="Fondo de ${peli.titulo}">
+    
+    <div class="detalle-wrapper">
+        <div class="bloque-inferior">
+            <div class="datos-centrados">
+                <h1>${peli.titulo}</h1>
+                <div class="meta-detalle-centrado">
+                    <span style="text-transform: capitalize;">🗓️ ${formatearFecha(peli.fecha, true)}</span>
+                </div>
+                <div class="meta-detalle-centrado">
+                    <span>👤 Sugerido por: ${peli.sugiere}</span>
+                </div>
+            </div>
 
-    contenido.innerHTML = `
-        <div class="header-detalle">
-            <img src="${peli.backdrop}" class="backdrop">
-            <div class="poster-overlay">
-                <img src="${peli.poster}" class="mini-poster">
-            </div>
-        </div>
-        <div class="detalle-info">
-            <h1>${peli.titulo}</h1>
-            <div style="font-size: 1.4rem; margin: 10px 0;">
-                ${generarEstrellas(peli.rating)}
-            </div>
-            <div class="meta-detalle">
-                <span style="text-transform: capitalize;">🗓️ ${formatearFecha(peli.fecha, true)}</span>
-                <span>👤 Sugerido por: ${peli.sugiere}</span>
-            </div>
             <div class="comentarios-seccion">
                 <h3>📝 Notas de la reunión</h3>
                 <p>${peli.anecdota || "No hay notas para esta sesión."}</p>
             </div>
         </div>
+    </div>
     `;
+
+    // Mostramos el modal y bloqueamos el scroll de la página de fondo
     modal.style.display = 'block';
     document.body.style.overflow = 'hidden';
 }
