@@ -118,8 +118,10 @@ header {
     width: 100%;
     height: 100%;
     z-index: 1000;
-    overflow: hidden; /* No queremos scroll aquí, el contenido fluye */
     background-color: black; /* Fonde de seguridad */
+    overflow: hidden; /* No queremos scroll aquí, el contenido fluye */
+    display: none;
+    grid-template-rows: auto 1fr;
 }
 
 /* Oscurecemos un poco la imagen para que el texto blanco sea legible */
@@ -163,8 +165,14 @@ header {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    z-index: -1;
-    /* Se va detrás de todo */
+    z-index: -1; /* Se va detrás de todo */
+}
+
+/* Estrellas en el detalle */
+.detalle-rating {
+    margin-bottom: 15px;
+    font-size: 1.2rem;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 .detalle-info {
@@ -187,17 +195,19 @@ header {
 
 /* El contenido que va sobre la imagen (Texto y notas) */
 .detalle-wrapper {
-    position: absolute; /* Cambiado a absolute para que se superponga al fondo */
-    top: 0;
-    left: 0;
-    z-index: 2; /* Sobre la capa oscura */
-    width: 100%;
-    height: 100%;
+    grid-row: 2;
     display: flex;
     flex-direction: column;
     justify-content: flex-end; /* Empuja el contenido hacia abajo */
     padding-bottom: 60px; /* Espacio abajo */
-    box-sizing: border-box;
+    z-index: 2; /* Sobre la capa oscura */
+    /*
+    position: absolute; / Cambiado a absolute para que se superponga al fondo /
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box; */
 }
 
 /* Contenedor específico para el título y los meta-datos (Centrados) */
@@ -228,23 +238,22 @@ header {
 .btn-cerrar {
     position: absolute;
     top: 20px;
-    right: 20px; /* Cambiado a la derecha para un estilo más común */
-    z-index: 10010;
+    right: 20px; /* Cambiado a la derecha como en iOS */
+    z-index: 1010;
     background: rgba(255, 255, 255, 0.2);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     color: white;
     border: none;
     border-radius: 50%;
-    width: 32px;
-    height: 32px;
+    width: 36px;
+    height: 36px;
     font-size: 18px;
-    font-weight: bold;
     cursor: pointer;
     display: flex;
-    justify-content: center;
     align-items: center;
-    transition: background 0.3s;
+    justify-content: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
 }
 
 .btn-cerrar:active {
@@ -327,4 +336,28 @@ header {
     font-size: 0.8rem;
     color: #ffc107;
     margin-top: 5px;
+}
+
+/* En escritorio, la imagen se verá más cinematográfica */
+@media (min-width: 768px) {
+    .backdrop-fondo {
+        object-position: center 20%;
+        /* Ajusta para que no se corten cabezas */
+    }
+}
+
+@keyframes slideUp {
+    from {
+        transform: translateY(100%);
+    }
+
+    to {
+        transform: translateY(0);
+    }
+}
+
+/* Esta clase se activará desde JS para mostrar el modal con animación */
+.modal-activo {
+    display: grid !important;
+    animation: slideUp 0.4s cubic-bezier(0.25, 1, 0.5, 1);
 }
