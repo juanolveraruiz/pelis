@@ -20,6 +20,18 @@ header {
     border-bottom: 1px solid #456;
 }
 
+h1 {
+    font-family: Playfair, serif;
+    font-weight: 900;
+    font-style: normal;
+}
+
+.title {
+    font-family: Playfair, serif;
+    font-weight: 900;
+    font-style: normal;
+}
+
 .container {
     padding: 20px;
     max-width: 800px;
@@ -341,8 +353,10 @@ header {
 /* En escritorio, la imagen se verá más cinematográfica */
 @media (min-width: 768px) {
     .backdrop-fondo {
-        object-position: center 20%;
-        /* Ajusta para que no se corten cabezas */
+        object-position: center 30%; /* Ajusta para que no se corten cabezas */
+    }
+    .detalle-modal :after {
+        height: 50%; /* El degradado cubre menos en escritorio para mostrar más fondo */
     }
 }
 

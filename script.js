@@ -15,7 +15,7 @@ const peliculas = [
         titulo: "Eternity",
         poster: "https://atwenty-four.transforms.svdcdn.com/production/images/Eternity_DOM_Online_Teaser_1-Sheet_01_FIN8.jpg?w=1923&auto=compress%2Cformat&fit=crop&dm=1753717316&s=b61bf543a5bed1bf6f7d20383340c3d0",
         backdrop: "https://preview.redd.it/i-just-saw-eternity-and-im-honestly-blown-away-v0-ogxre93beo7g1.jpeg?width=1080&crop=smart&auto=webp&s=a36b097a3dc673913a6b15cf4255f785a247e75b",
-        deskdrop: "https://www.ecartelera.com.mx/carteles/fondos/19500/19564-n2.jpg",
+        deskdrop: "https://www.macerkopf.de/wp-content/uploads/2026/02/apple_tv_eternity.jpeg",
         estado: "vista",
         sugiere: "Votación (Juan)",
         fecha: "2026-03-06",
@@ -47,7 +47,7 @@ const peliculas = [
     {
         titulo: "Your Name",
         poster: "https://m.media-amazon.com/images/M/MV5BMTIyNzFjNzItZmQ1MC00NzhjLThmMzYtZjRhN2Y3MmM2OGQyXkEyXkFqcGc@._V1_.jpg",
-        backdrop: "",
+        backdrop: "https://pics.filmaffinity.com/Your_Name-406681275-large.jpg",
         deskdrop: "https://occ-0-8407-2219.1.nflxso.net/dnm/api/v6/6AYY37jfdO6hpXcMjf9Yu5cnmO0/AAAABdlfYwRPNsJggmpXt-_Kxbz0mdrQuqgAiCDRJuk8CdyQn3WTwb6Iu2wa-q8atqR2O2wjzjmF02Hy6p_xwHXO5r-LfqyKcCyhGhnA.jpg?r=6ad",
         estado: "vista",
         sugiere: "Alan & Juan",
@@ -164,7 +164,7 @@ function abrirDetalle(index) {
     // Detectamos si es escritorio (más de 768px)
     const esEscritorio = window.innerWidth > 768;
     // Si tienes una imagen específica para PC la usa, si no, usa el backdrop normal
-    const imagenFondo = (esEscritorio && peli.backdropDesktop) ? peli.backdropDesktop : peli.backdrop;
+    const imagenFondo = (esEscritorio && peli.deskdrop) ? peli.deskdrop : peli.backdrop;
 
     modal.innerHTML = `
         <button class="btn-cerrar" onclick="cerrarDetalle()">✕</button>
