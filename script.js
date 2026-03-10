@@ -25,7 +25,7 @@ const peliculas = [
     {
         titulo: "Detective Pikachu",
         poster: "https://images.justwatch.com/poster/309518628/s718/pokemon-detective-pikachu.jpg",
-        backdrop: "https://media-cldnry.s-nbcnews.com/image/upload/newscms/2019_19/2854016/190510-detective-pikachu-4-ew-655p.jpg",
+        backdrop: "https://img10.hotstar.com/image/upload/f_auto,q_auto/sources/r1/cms/prod/5356/1734086365356-i",
         deskdrop: "https://img10.hotstar.com/image/upload/f_auto,q_auto/sources/r1/cms/prod/5356/1734086365356-i",
         estado: "vista",
         sugiere: "Luis",
