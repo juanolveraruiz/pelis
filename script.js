@@ -1,10 +1,10 @@
 // --- 1. BASE DE DATOS DEL CINE CLUB ---
 const peliculas = [
     {
-        titulo: "El Tiempo Contigo",
-        poster: "https://moviepostermexico.com/cdn/shop/products/weathering_with_you_ver2_xxlg_1024x1024@2x.jpg?v=1610689111",
-        backdrop: "https://m.media-amazon.com/images/I/71LqK+bWOyL.jpg",
-        deskdrop: "https://occ-0-8407-2218.1.nflxso.net/dnm/api/v6/6AYY37jfdO6hpXcMjf9Yu5cnmO0/AAAABdQT660ZQu954iJys6LiHcK4JCJucsAX6UZqTKrZhK8MWQp-wkFktPqRVs3mMp40W06H7Y-U9utdc-3gjEm7S67BXhCzVf9L2fqF.jpg?r=b28",
+        titulo: "Zoolander",
+        poster: "https://m.media-amazon.com/images/M/MV5BODI4NDY2NDM5M15BMl5BanBnXkFtZTgwNzEwOTMxMDE@._V1_FMjpg_UX1000_.jpg",
+        backdrop: "https://resizing.flixster.com/-XZAfHZM39UwaGJIFWKAE8fS0ak=/v3/t/assets/p28447_p_v8_ax.jpg",
+        deskdrop: "https://ca-times.brightspotcdn.com/dims4/default/15032ac/2147483647/strip/true/crop/1600x900+0+0/resize/1200x675!/quality/75/?url=https%3A%2F%2Fcalifornia-times-brightspot.s3.amazonaws.com%2F21%2Ff9%2F36756fa9c8b47b89110156c81ef2%2Fla-et-mn-zoolander-production-side-20160212-001",
         estado: "pendiente",
         sugiere: "Alan?",
         fecha: "2026-03-13",
