@@ -76,8 +76,14 @@ h1 {
     margin-bottom: 8px;
 }
 
-.vista { background: var(--accent); color: #000; }
-.pendiente { background: var(--pending); color: #000; }
+.vista { 
+    background: var(--accent) !important;
+    color: #000 !important; 
+}
+.pendiente { 
+    background: var(--pending) !important; 
+    color: #000 !important; 
+}
 
 /* Añade esto a tu archivo style.css */
 .meta-data {
@@ -357,6 +363,23 @@ h1 {
     }
     .detalle-modal :after {
         height: 50%; /* El degradado cubre menos en escritorio para mostrar más fondo */
+    }
+    .movie-grid {
+        grid-template-columns: repeat(3, 1fr); /* 3 películas por fila */
+        gap: 30px; /* Un poco más de espacio entre ellas para que respire */
+    }
+    /* Opcional: Si quieres que el contenedor sea un poco más ancho en PC */
+    .container {
+        max-width: 1000px;
+    }
+    .movie-card {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    
+    .movie-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+        border: 3px solid rgba(255, 255, 255, 0.3); /* Borde brillante al pasar el mouse */
     }
 }
 

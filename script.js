@@ -5,10 +5,10 @@ const peliculas = [
         poster: "https://m.media-amazon.com/images/M/MV5BODI4NDY2NDM5M15BMl5BanBnXkFtZTgwNzEwOTMxMDE@._V1_FMjpg_UX1000_.jpg",
         backdrop: "https://resizing.flixster.com/-XZAfHZM39UwaGJIFWKAE8fS0ak=/v3/t/assets/p28447_p_v8_ax.jpg",
         deskdrop: "https://ca-times.brightspotcdn.com/dims4/default/15032ac/2147483647/strip/true/crop/1600x900+0+0/resize/1200x675!/quality/75/?url=https%3A%2F%2Fcalifornia-times-brightspot.s3.amazonaws.com%2F21%2Ff9%2F36756fa9c8b47b89110156c81ef2%2Fla-et-mn-zoolander-production-side-20160212-001",
-        estado: "pendiente",
-        sugiere: "Alan?",
+        estado: "vista",
+        sugiere: "Alan",
         fecha: "2026-03-13",
-        rating: 1,
+        rating: 4,
         anecdota: "",
     },
     {
@@ -125,7 +125,7 @@ function renderizar(lista) {
     const countPendientes = document.getElementById('count-pendientes');
     
     if (countVistas && countPendientes) {
-        countVistas.innerText = peliculas.filter(p => p.estado.toLowerCase().includes('vist')).length;
+        countVistas.innerText = peliculas.filter(p => p.estado.toLowerCase().includes('vista')).length;
         countPendientes.innerText = peliculas.filter(p => p.estado === 'pendiente').length;
     }
 
@@ -141,7 +141,7 @@ function renderizar(lista) {
         card.innerHTML = `
             <img src="${peli.poster}" class="poster" alt="${peli.titulo}">
             <div class="info">
-                <span class="badge ${peli.estado.toLowerCase().includes('vist') ? 'visto' : 'pendiente'}">${peli.estado}</span>
+                <span class="badge ${peli.estado.toLowerCase().includes('vista') ? 'vista' : 'pendiente'}">${peli.estado}</span>
                 <span class="title">${peli.titulo}</span>
                 <div style="color: #ffc107; font-size: 0.8rem; margin-bottom: 5px;">
                     ${peli.estado.toLowerCase().includes('vist') ? generarEstrellas(peli.rating) : ''}
@@ -175,14 +175,14 @@ function abrirDetalle(index) {
                 <h1>${peli.titulo}</h1>
                 
                 <div class="detalle-rating">
-                    ${peli.estado.toLowerCase().includes('vist') ? generarEstrellas(peli.rating) : ''}
+                    ${peli.estado.toLowerCase().includes('vista') ? generarEstrellas(peli.rating) : ''}
                 </div>
 
                 <div class="meta-detalle-centrado">
                     <span style="text-transform: capitalize;">🗓️ ${formatearFecha(peli.fecha, true)}</span>
                 </div>
                 <div class="meta-detalle-centrado">
-                    <span>👤 Sugerido por: ${peli.sugiere}</span>
+                    <span>👤 Sugerida por ${peli.sugiere}</span>
                 </div>
             </div>
 
